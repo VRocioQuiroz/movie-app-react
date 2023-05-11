@@ -18,7 +18,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 
-const pages = ['Home', 'Ultimos lanzamientos', 'Populares'];
+const pages = [{title: 'Home', path: '/'}, {title: 'Populares', path: '/most_popular'}];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavBar() {
@@ -137,9 +137,9 @@ function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link to="/">
-                  <Typography textAlign="center">{pages}</Typography>
+                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                  <Link to={page.path}>
+                  <Typography textAlign="center">{pages.title}</Typography>
                   </Link>
                 </MenuItem>
               ))}
@@ -168,11 +168,11 @@ function NavBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.title}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                <Link to={page.path}>{page.title}</Link>
               </Button>
             ))}
           </Box>
