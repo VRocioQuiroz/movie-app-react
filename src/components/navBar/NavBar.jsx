@@ -18,7 +18,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 
-const pages = [{title: 'Home', path: '/'}, {title: 'Populares', path: '/most_popular'}];
+const pages = [{title: 'Home', path: '/'}, {title: 'Populares', path: '/most_popular'}, {title:'ultimos lanzamientos', path: '/latest_releases'}];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavBar() {
