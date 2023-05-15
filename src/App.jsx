@@ -6,10 +6,14 @@ import MostPopular from "./components/mostPopular/MostPopular";
 import Footer from "./components/mostPopular/footer/footer";
 import Upcoming from "./components/upcoming/Upcoming";
 
+
+
+
 function App() {
   return (
     <BrowserRouter>
         <NavBar />
+        
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/most_popular" element={<MostPopular />} />
