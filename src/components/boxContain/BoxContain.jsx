@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import CardMovie from "../cards/CardMovie";
 import PaginationMovies from "../paginationMovies/PaginationMovies";
+import {Box} from'@mui/material'
 
 
 export default function BoxContain({path, hasPagination=true}) {
@@ -13,25 +14,24 @@ export default function BoxContain({path, hasPagination=true}) {
     .then((data) => {
       setMovies(data.data.results)
     })
-  }, [pageNumber]);
+  }, [pageNumber, path]);
 
-  const handleChange = (event, value) => {
+  const handleChange = (event,value) => {
     setPageNumber(value)
   }
-   
-
+  
   return (
-    <div>
-     
-      {console.log(movies)} 
-      {movies.map((movie) => {
-         return(<CardMovie id={movie.id} title={movie.title} poster={movie.poster_path} />)
-      })}
-       
-       {
-        hasPagination && <PaginationMovies onNewPage={handleChange} pageNumber={pageNumber} />
-       }
 
-    </div>
+    <Box> 
+        {console.log(movies)} 
+        {movies.map((movie) => {
+         return(<CardMovie id={movie.id} title={movie.title} poster={movie.poster_path} />)
+        })}
+         
+        {
+         hasPagination && <PaginationMovies onNewPage={handleChange} pageNumber={pageNumber} />
+        }
+    </Box>
+  
   )
 }

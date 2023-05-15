@@ -3,10 +3,11 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 
-export default function CardMovie({id, title, poster}) {
-  return (
 
-    <Card sx={{ maxWidth: 230 } }>
+export default function CardMovie({title, poster}) {
+  return (
+    
+    <Card sx={{ maxWidth: 230}}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -17,5 +18,6 @@ export default function CardMovie({id, title, poster}) {
      
       </CardActionArea>
     </Card>
+    
   );
 }
