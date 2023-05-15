@@ -5,7 +5,7 @@ import PaginationMovies from "../paginationMovies/PaginationMovies";
 import {Box} from'@mui/material'
 
 
-export default function BoxContain({path, hasPagination=true}) {
+export default function BoxContain({path}) {
   const [movies, setMovies] = useState([]);
   const [pageNumber, setPageNumber]= useState(1)
 
@@ -28,9 +28,8 @@ export default function BoxContain({path, hasPagination=true}) {
          return(<CardMovie id={movie.id} title={movie.title} poster={movie.poster_path} />)
         })}
          
-        {
-         hasPagination && <PaginationMovies onNewPage={handleChange} pageNumber={pageNumber} />
-        }
+        <PaginationMovies onNewPage={handleChange} pageNumber={pageNumber} />
+        
     </Box>
   
   )
