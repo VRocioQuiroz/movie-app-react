@@ -10,7 +10,7 @@ export default function BoxContain({path}) {
   const [pageNumber, setPageNumber]= useState(1)
 
   useEffect(() => {
-    axios(`https://api.themoviedb.org/3/${path}?api_key=90a2c5125b226abf0debb357d9f7912d&language=en-US&page=${pageNumber}`)
+    axios(`https://api.themoviedb.org/3/${path}?api_key=90a2c5125b226abf0debb357d9f7912d&language=es-ES&page=${pageNumber}`)
     .then((data) => {
       setMovies(data.data.results)
     })
