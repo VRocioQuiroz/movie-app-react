@@ -96,6 +96,7 @@ function NavBar() {
             href="/"
             sx={{
               mr: 2,
+              height: 100,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
@@ -139,7 +140,7 @@ function NavBar() {
               {pages.map((page) => (
                 <MenuItem key={page.title} onClick={handleCloseNavMenu}>
                   <Link to={page.path}>
-                  <Typography textAlign="center">{pages.title}</Typography>
+                  <Typography sx={{ underline:'none' }}>{pages.title}</Typography>
                   </Link>
                 </MenuItem>
               ))}
@@ -167,7 +168,7 @@ function NavBar() {
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
+              <Button size="large"
                 key={page.title}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}

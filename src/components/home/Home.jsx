@@ -1,12 +1,17 @@
 import MultipleSlides from "../multipleSlides/MultipleSlides"
+import Carousel from "../carousel/Carousel"
 
 export default function Home() {
+
+  
   return (
-    <div>
-      <h2>Películas populares</h2> 
-      <MultipleSlides path="/movie/popular" />
-      <h2>Películas mejor puntuadas</h2>
-      <MultipleSlides path="/movie/top_rated" /> 
-    </div>
+    <>
+      <Carousel />
+
+      <MultipleSlides path="/movie/popular" categoryTitle={"Películas populares"}/>
+     
+      <MultipleSlides path="/movie/top_rated" categoryTitle={"Películas mejor puntuadas"}/> 
+      
+    </>
   )
 }
