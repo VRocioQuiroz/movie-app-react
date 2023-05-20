@@ -11,12 +11,15 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+//import AdbIcon from '@mui/icons-material/Adb';
+import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';
 
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
+
+
 
 const pages = [{title: 'Home', path: '/'}, {title: 'Populares', path: '/most_popular'}, {title:'Próximos lanzamientos', path: '/upcoming'}];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -85,10 +88,10 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="static" sx={{backgroundColor:'#0C134F'}}>
+    <AppBar position="static" sx={{backgroundColor:'#1A120B'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <SlowMotionVideoOutlinedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color:"#28DF99", fontSize: 40, pt:2 }} />
           <Typography
             variant="h6"
             noWrap
@@ -96,16 +99,19 @@ function NavBar() {
             href="/"
             sx={{
               mr: 2,
-              height: 100,
+              mt:6,
+              height: 80,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
+              fontSize: 30,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              color:"#28DF99"
             }}
           >
-            LOGO
+            AllMovies
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -138,20 +144,20 @@ function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
-                  <Link to={page.path}>
-                  <Typography sx={{ underline:'none' }}>{pages.title}</Typography>
-                  </Link>
+                <Link to={page.path} sx={{backgroundColor:"black"}}>
+                <MenuItem key={page.title} onClick={handleCloseNavMenu} sx={{textDecoration:"none", color:"black"}} >
+                <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <SlowMotionVideoOutlinedIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color:"#28DF99" }} />
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -159,19 +165,20 @@ function NavBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
               textDecoration: 'none',
+              color:"#28DF99"
             }}
           >
-            LOGO
+            AllMovies
           </Typography>
           
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex'} }}>
             {pages.map((page) => (
               <Button size="large"
                 key={page.title}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                
               >
                 <Link to={page.path}>{page.title}</Link>
               </Button>
@@ -187,7 +194,7 @@ function NavBar() {
             />
           </Search>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -215,7 +222,7 @@ function NavBar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
 
         </Toolbar>
         

@@ -57,7 +57,7 @@ export default function MultipleSlides ({searchCategory, categoryTitle, path }) 
     <ThemeProvider theme={theme}>
       <Box sx={{width: '90%', margin: '0 auto', marginTop: '50px'}}>
 
-        <Typography variant="h4" sx={{mb:'20px', display: 'flex', justifyContent: 'center', fontWeight: 'bold'}}>
+        <Typography variant="h3" sx={{mb:'20px', display: 'flex', justifyContent: 'center', color:"white", fontFamily:"BlinkMacSystemFont", fontWeight: 'bold'}}>
           {categoryTitle}
         </Typography>
 
