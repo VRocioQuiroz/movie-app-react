@@ -8,13 +8,22 @@ import DetailMovie from '../detailMovie/DetailMovie';
 export default function CardMovie({title, poster, id}) {
   return (
     
-    <Card sx={{ maxWidth: 230}}>
+    <Card sx={{ 
+      width:"200px",
+      m:2, 
+      transition: "transform 0.3s",
+      "&:hover": { transform: "scale(1.05)"},
+      boxShadow: "0 0 8px rgba(255, 255, 255, 0.5)"
+      }}>
+
       <CardActionArea href={`movie/${id}`}>
         <CardMedia
-            component="img"
-            height="300"
-            src={`https://image.tmdb.org/t/p/w500/${poster}`}
-            alt={title}
+          component="img"
+          width={"100%"}
+          height="300"
+          src={`https://image.tmdb.org/t/p/w500/${poster}`}
+          alt={title}
+          style={{ objectFit: "cover" }}
         />
       </CardActionArea>
     </Card>

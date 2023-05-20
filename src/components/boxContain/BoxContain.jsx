@@ -22,12 +22,13 @@ export default function BoxContain({path}) {
   
   return (
 
-    <Box> 
+    <Box sx={{backgroundColor:"#191919", pb:4}}> 
+      <Box sx={{display:"flex", flexWrap:"wrap", justifyContent:"flex-start", ml:10}}>
         {console.log(movies)} 
         {movies.map((movie) => {
          return(<CardMovie id={movie.id} title={movie.title} poster={movie.poster_path} />)
         })}
-         
+      </Box> 
         <PaginationMovies onNewPage={handleChange} pageNumber={pageNumber} />
         
     </Box>
