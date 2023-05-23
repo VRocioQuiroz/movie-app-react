@@ -2,15 +2,18 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import CardMovie from "../cards/CardMovie";
 import PaginationMovies from "../paginationMovies/PaginationMovies";
-import {Box} from'@mui/material'
+import {Box, Typography} from'@mui/material'
 
 
-export default function BoxContain({path}) {
+export default function BoxContain({path, categoryTitle}) {
+
   const [movies, setMovies] = useState([]);
-  const [pageNumber, setPageNumber]= useState(1)
+  const [pageNumber, setPageNumber]= useState(1);
+
+  const apiKey = import.meta.env.VITE_APP_API_KEY;
 
   useEffect(() => {
-    axios(`https://api.themoviedb.org/3/${path}?api_key=90a2c5125b226abf0debb357d9f7912d&language=es-ES&page=${pageNumber}`)
+    axios(`https://api.themoviedb.org/3/${path}?api_key=${apiKey}&language=es-ES&page=${pageNumber}`)
     .then((data) => {
       setMovies(data.data.results)
     })
@@ -22,14 +25,23 @@ export default function BoxContain({path}) {
   
   return (
 
-    <Box sx={{backgroundColor:"#191919", pb:4}}> 
+    <Box sx={{backgroundColor:"#191919", py:4}}> 
+
+      <Typography variant="h3" sx={{mb:'20px', display: 'flex', justifyContent: 'center', color:"white", fontFamily:"BlinkMacSystemFont", fontWeight: 'bold'}}>
+        {categoryTitle}
+      </Typography>
+
       <Box sx={{display:"flex", flexWrap:"wrap", justifyContent:"flex-start", ml:10}}>
-        {console.log(movies)} 
+    
         {movies.map((movie) => {
-         return(<CardMovie id={movie.id} title={movie.title} poster={movie.poster_path} />)
+            if (movie.poster_path !== null) {
+          return <CardMovie id={movie.id} title={movie.title} poster={movie.poster_path} />;
+          }
+        return null;
         })}
       </Box> 
-        <PaginationMovies onNewPage={handleChange} pageNumber={pageNumber} />
+
+      <PaginationMovies onNewPage={handleChange} pageNumber={pageNumber} />
         
     </Box>
   

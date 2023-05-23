@@ -4,7 +4,7 @@ export default function MostPopular() {
 
   return (
     
-    <BoxContain path="/movie/popular"/>
+    <BoxContain path="/movie/popular" categoryTitle={"Populares"} />
     
   )
 }

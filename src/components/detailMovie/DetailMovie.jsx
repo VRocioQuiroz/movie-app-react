@@ -3,19 +3,27 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Box, CardMedia, Button, Typography, Stack} from '@mui/material';
 import { PlayArrow } from "@mui/icons-material";
-
+import ReactPlayer from 'react-player';
 
 export default function DetailMovie() {
     
     const {id} = useParams()
     
     const [movie, setMovie] = useState({genres:[]});
+    const [trailer, setTrailer] = useState({})
+
+    const apiKey = import.meta.env.VITE_APP_API_KEY;
   
     useEffect(() => {
-      axios(`https://api.themoviedb.org/3/movie/${id}?api_key=90a2c5125b226abf0debb357d9f7912d&language=es-ES`)
+      axios(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=es-ES`)
       .then((data) => {
-          console.log(data.data)
         setMovie(data.data)
+      })
+
+      axios(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&languaje=es-ES`)
+      .then((data) => {
+          console.log(data.data.results[0])
+        setTrailer(data.data.results[0])
       })
     }, [id]);
   
@@ -35,7 +43,7 @@ export default function DetailMovie() {
           title={movie.title}
         />
           
-        <Box sx={{width:900, heigth:400, m:4, p:3, backgroundColor:"rgba(0, 0, 0, 0.5)"}}>
+        <Box sx={{width:900, height:450, m:4, p:2, backgroundColor:"rgba(0, 0, 0, 0.5)"}}>
           <Typography variant="h2" sx={{mt:2, color:"white"}} >
             {movie.title}
           </Typography>
@@ -58,10 +66,18 @@ export default function DetailMovie() {
               Trailer
             </Button> 
           </Stack>
+          <Box>
+          
+          <ReactPlayer url={`https://www.youtube.com/watch?v=${trailer.key}`} />
 
+          </Box>
 
         </Box>
           
+       
+       
+       
+
     
       </Box>
     
