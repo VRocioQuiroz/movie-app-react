@@ -9,25 +9,19 @@ import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/s
 let theme = createTheme()
 theme = responsiveFontSizes(theme);
 
-//color: context.clearTheme ? 'black' : 'white',
 
-
-export default function MultipleSlides ({searchCategory, categoryTitle, path }) {
+export default function MultipleSlides ({categoryTitle, path }) {
 
   const [movies, setMovies] = useState([]);
-  const [pageNumber, setPageNumber]= useState(1)
+ 
+  const apiKey = import.meta.env.VITE_APP_API_KEY;
  
   useEffect(() => {
-    axios(`https://api.themoviedb.org/3/${path}?api_key=90a2c5125b226abf0debb357d9f7912d&language=es-ES&page=${pageNumber}`)
+    axios(`https://api.themoviedb.org/3/${path}?api_key=${apiKey}&language=es-ES`)
     .then((data) => {
       setMovies(data.data.results)
     })
-  }, [pageNumber, path]);
-
-  
-  const handleChange = (event,value) => {
-    setPageNumber(value)
-  }
+  }, [path]);
 
   const options = {
     type: 'slide',

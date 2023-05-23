@@ -11,14 +11,13 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-//import AdbIcon from '@mui/icons-material/Adb';
 import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';
 
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-
+import { useState, useEffect } from 'react';
 
 
 const pages = [{title: 'Home', path: '/'}, {title: 'Populares', path: '/most_popular'}, {title:'Próximos lanzamientos', path: '/upcoming'}];
@@ -72,6 +71,7 @@ function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -86,6 +86,8 @@ function NavBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  
 
   return (
     <AppBar position="static" sx={{backgroundColor:'#1A120B'}}>
@@ -185,14 +187,13 @@ function NavBar() {
             ))}
           </Box>
 
-          <Search style={{margin: "12px"}}>
-            <SearchIconWrapper>
+
+           <Link to="/search">
+
               <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+           </Link>
+          
+          
 
           {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -227,7 +228,10 @@ function NavBar() {
         </Toolbar>
         
       </Container>
+      
     </AppBar>
   );
 }
+
+
 export default NavBar;

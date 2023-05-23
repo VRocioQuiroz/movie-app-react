@@ -4,8 +4,6 @@ import axios from "axios";
 import { Box, Typography, Button, CardMedia } from "@mui/material";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { green } from "@mui/material/colors";
-
 
 export default function App() {
 
@@ -21,7 +19,7 @@ export default function App() {
 
  
   return (
-    <Box style={{heigth:"300px"}} >
+    <Box style={{heigth:"300px", boxShadow: "0 0 8px rgba(255, 255, 255, 0.5)" }} >
       <Carousel 
         autoPlay
         interval={4000}
@@ -36,7 +34,7 @@ export default function App() {
       {trendingMovies.map((movie)=>{
         return(
               
-          <Box sx={{ maxWidth: 2000, height:500, display:"flex", justifyContent:"center", alignItems:"center", backgroundImage:`url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} >
+          <Box key={movie.title} sx={{ maxWidth: 2000, height:500, display:"flex", justifyContent:"center", alignItems:"center", backgroundImage:`url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} >
             <Box sx={{width:900, heigth:400, p:2, backgroundColor:"rgba(0, 0, 0, 0.5)"}}>
               <Typography variant="h2" sx={{p:4, color:"white", fontWeight:"bold" }} >
                 {movie.title}
@@ -46,7 +44,7 @@ export default function App() {
                 {movie.overview} 
               </Typography>
 
-              <Button variant="contained" color="success" sx={{p:2}}>
+              <Button href={`movie/${movie.id}`}  variant="contained" color="success" sx={{p:2}}>
                 Ver mas
               </Button> 
            
@@ -56,18 +54,6 @@ export default function App() {
             )
           })}
        
-
-
-
-        {/* <div>
-          <img style={{height:"100%",}} src="https://okdiario.com/img/2022/10/18/los-gatos-pueden-ver-en-color-1-655x368.jpg" alt="Slide 1" />
-        </div>
-        <div>
-          <img src="https://okdiario.com/img/2022/10/18/los-gatos-pueden-ver-en-color-1-655x368.jpg" alt="Slide 2" />
-        </div>
-        <div>
-          <img src="https://okdiario.com/img/2022/10/18/los-gatos-pueden-ver-en-color-1-655x368.jpg" alt="Slide 3" />
-        </div> */}
       </Carousel>
     </Box>
   );
