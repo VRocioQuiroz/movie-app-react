@@ -4,6 +4,7 @@ import axios from "axios";
 import { Box, CardMedia, Button, Typography, Stack} from '@mui/material';
 import { PlayArrow } from "@mui/icons-material";
 import ReactPlayer from 'react-player';
+import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 
 export default function DetailMovie() {
     
@@ -11,6 +12,7 @@ export default function DetailMovie() {
     
     const [movie, setMovie] = useState({genres:[]});
     const [trailer, setTrailer] = useState({})
+    const [showTrailer, setShowTrailer] = useState(false);
 
     const apiKey = import.meta.env.VITE_APP_API_KEY;
   
@@ -22,7 +24,7 @@ export default function DetailMovie() {
 
       axios(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&languaje=es-ES`)
       .then((data) => {
-          console.log(data.data.results[0])
+          console.log(data.data)
         setTrailer(data.data.results[0])
       })
     }, [id]);
@@ -33,9 +35,14 @@ export default function DetailMovie() {
       return date.getFullYear()
     }
     
+    const handleToggleTrailer = () => {
+      setShowTrailer(!showTrailer);
+    };
+    
+
     return (
   
-      <Box sx={{ maxWidth: 2000, height:500, py:12, px:6, backgroundImage:`url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', display: "flex", flexDirection:"row" }} >
+      <Box sx={{ maxWidth: 2000, height:600, py:12, px:6, backgroundImage:`url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', display: "flex", flexDirection:"row" }} >
         
         <CardMedia
           sx={{width:300, height: 400, border: 1}}
@@ -43,40 +50,46 @@ export default function DetailMovie() {
           title={movie.title}
         />
           
-        <Box sx={{width:900, height:450, m:4, p:2, backgroundColor:"rgba(0, 0, 0, 0.5)"}}>
-          <Typography variant="h2" sx={{mt:2, color:"white"}} >
+        <Box sx={{width:900, height:600, m:4, p:2, backgroundColor:"rgba(0, 0, 0, 0.5)"}}>
+          <Typography variant="h3" sx={{my:2, color:"white"}} >
             {movie.title}
           </Typography>
 
           <Typography sx={{mb:2, color:"white", fontSize:"24px", fontWeight:"bold"}}>
             {stringToYear(movie.release_date)} 
           </Typography>
-
+          
+          {!showTrailer && (
           <Typography variant="subtitle1" sx={{color:"white", fontWeight:"bold"}}>
             {movie.overview} 
           </Typography>
+          )}
 
-          <Stack spacing={2} direction="row" sx={{m:3}} >
+          {!showTrailer && (
+          <Stack spacing={2} direction="row" sx={{m:4}} >
             {movie.genres.map((genre)=>{ 
-              return <Button key={genre.id} variant="contained" size="small" sx={{color:"white", fontSize:"12px", borderRadius:"25px", pointerEvents: 'none'}}> # {genre.name} </Button>})}
+              return <Button key={genre.id} variant="contained" size="small" sx={{color:"black", fontSize:"12px", fontWeight:"bold", backgroundColor:"#28DF99", borderRadius:"25px", pointerEvents: 'none'}}> # {genre.name} </Button>})}
           </Stack>
+          )}
            
+           {!showTrailer && ( 
           <Stack direction="row" spacing={2}>
-            <Button startIcon={<PlayArrow />} variant="elevated" size="large" sx={{color:"white", fontWeight:"bold"}}>
+            <Button startIcon={<PlayArrow />} variant="elevated" size="large" sx={{color:"white", fontWeight:"bold"}} onClick={handleToggleTrailer}>
               Trailer
             </Button> 
           </Stack>
-          <Box>
-          
-          <ReactPlayer url={`https://www.youtube.com/watch?v=${trailer.key}`} />
+          )}
 
-          </Box>
+          {showTrailer && (
+          <Box>
+            <HighlightOffOutlinedIcon fontSize="large" sx={{ml:75, color:"white"}} onClick={handleToggleTrailer} /> 
+            { trailer && trailer.key ?
+            <ReactPlayer url={`https://www.youtube.com/watch?v=${trailer.key}`} /> : <p style={{fontSize:"25px"}}>Ø Trailer no disponible</p> }
+          </Box> 
+          )}
 
         </Box>
           
-       
-       
-       
 
     
       </Box>

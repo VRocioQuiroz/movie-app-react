@@ -5,12 +5,16 @@ import { Box, Typography, Button, CardMedia } from "@mui/material";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+import { green } from '@mui/material/colors';
+
 export default function App() {
 
     const [trendingMovies, setTrendingMovies] = useState([]);
+
+    const apiKey = import.meta.env.VITE_APP_API_KEY;
     
     useEffect(() => {
-      axios('https://api.themoviedb.org/3/trending/movie/week?api_key=90a2c5125b226abf0debb357d9f7912d&language=es-ES')
+      axios(`https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}&language=es-ES`)
       .then((data) => {
         setTrendingMovies(data.data.results)
       })
@@ -44,7 +48,7 @@ export default function App() {
                 {movie.overview} 
               </Typography>
 
-              <Button href={`movie/${movie.id}`}  variant="contained" color="success" sx={{p:2}}>
+              <Button href={`movie/${movie.id}`}  variant="contained" sx={{p:2, backgroundColor:"#28DF99", }}>
                 Ver mas
               </Button> 
            

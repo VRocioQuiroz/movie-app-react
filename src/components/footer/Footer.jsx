@@ -7,6 +7,7 @@ export default function Footer() {
         width: "100%",
         height: 150,
         backgroundColor: '#1A120B',
+
       }}
     />
   );
