@@ -1,10 +1,11 @@
 import React from 'react';
-import {AppBar, Box, IconButton, Typography, Menu, Container, Button, MenuItem} from '@mui/material';
+import {AppBar, Box, IconButton, Typography, Menu, Container, Button, MenuItem, Switch} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Search from '@mui/icons-material/Search';
 import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';
 import { Link } from 'react-router-dom';
+import SwitchButton from '../switchButton/SwitchButton';
 
 
 const pages = [{title: 'Home', path: '/'}, {title: 'Populares', path: '/most_popular'}, {title:'Próximos lanzamientos', path: '/upcoming'}];
@@ -135,6 +136,8 @@ function NavBar() {
               <Search fontSize='large' sx={{color:"#28DF99"}} />
             </Link>
             </Button>
+
+            <SwitchButton />
 
         </Toolbar>
         
