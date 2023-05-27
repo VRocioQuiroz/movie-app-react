@@ -44,7 +44,7 @@ function NavBar() {
               letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
-              color:"#28DF99"
+              color:"#3dd6a8"
             }}
           >
             AppMovies
@@ -103,7 +103,7 @@ function NavBar() {
               fontWeight: 900,
               letterSpacing: '.1rem',
               textDecoration: 'none',
-              color:"#28DF99",
+              color:"#3dd6a8",
 
             }}
           >
@@ -113,11 +113,11 @@ function NavBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex'} }}>
             {pages.map((page) => (
-              <Link to={page.path} style={{textDecoration:"underline", textDecorationColor:"#28DF99"}} >
+              <Link to={page.path} style={{textDecoration:"underline", textDecorationColor:"#3dd6a8"}} >
                 <Button size="large"
                   key={page.title}
                   onClick={handleCloseNavMenu}
-                  sx={{ mt:2, ml:12, color: 'white', display: 'block' }}
+                  sx={{ mt:2, ml:12, color: 'white', display: 'block', fontFamily:"monospace", fontSize:"20px" }}
                   
                 >
                 {page.title}
@@ -128,16 +128,16 @@ function NavBar() {
           </Box>
 
             <Button sx={{
-                mr:"20px",
-                borderRadius: "25%",
+                mr:"50px",
+                borderRadius: "50%",
                 boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset',
               }}>
             <Link to="/search">
-              <Search fontSize='large' sx={{color:"#28DF99"}} />
+              <Search sx={{color:"#3dd6a8", fontSize:"50px"}} />
             </Link>
             </Button>
 
-            <SwitchButton />
+            <SwitchButton/>
 
         </Toolbar>
         

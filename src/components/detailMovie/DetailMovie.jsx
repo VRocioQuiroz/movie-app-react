@@ -6,6 +6,7 @@ import { PlayArrow } from "@mui/icons-material";
 import ReactPlayer from 'react-player';
 import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 
+
 export default function DetailMovie() {
     
     const {id} = useParams()
@@ -38,8 +39,8 @@ export default function DetailMovie() {
     const handleToggleTrailer = () => {
       setShowTrailer(!showTrailer);
     };
-    
 
+    
     return (
   
       <Box sx={{ maxWidth: 2000, height:600, py:12, px:6, backgroundImage:`url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', display: "flex", flexDirection:"row" }} >
