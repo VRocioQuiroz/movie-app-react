@@ -6,7 +6,7 @@ import MostPopular from "./components/mostPopular/MostPopular";
 import Footer from "./components/footer/Footer";
 import Upcoming from "./components/upcoming/Upcoming";
 import DetailMovie from "./components/detailMovie/DetailMovie";
-import SearchMovies from "./components/searchMovies/searchMovies";
+import SearchMovies from "./components/searchMovies/SearchMovies";
 
 
 
