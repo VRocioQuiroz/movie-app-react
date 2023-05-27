@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import CardMovie from "../cards/CardMovie";
 import PaginationMovies from "../paginationMovies/PaginationMovies";
 import {Box, Typography} from'@mui/material'
-
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function BoxContain({path, categoryTitle}) {
 
   const [movies, setMovies] = useState([]);
   const [pageNumber, setPageNumber]= useState(1);
+  const { theme} = useContext(ThemeContext)
 
   const apiKey = import.meta.env.VITE_APP_API_KEY;
 
@@ -25,9 +26,9 @@ export default function BoxContain({path, categoryTitle}) {
   
   return (
 
-    <Box sx={{backgroundColor:"#191919", py:4}}> 
+    <Box sx={{backgroundColor: theme, py:4}}> 
 
-      <Typography variant="h3" sx={{mb:'20px', display: 'flex', justifyContent: 'center', color:"white", fontFamily:"BlinkMacSystemFont", fontWeight: 'bold'}}>
+      <Typography variant="h3" sx={{mb:'20px', display: 'flex', justifyContent: 'center', color: theme, fontFamily:"BlinkMacSystemFont", fontWeight: 'bold'}}>
         {categoryTitle}
       </Typography>
 

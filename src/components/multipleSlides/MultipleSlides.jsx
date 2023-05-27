@@ -2,17 +2,20 @@ import { Box, Typography } from '@mui/material';
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import CardMovie from '../cards/CardMovie';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
+import { ThemeContext } from "../../context/ThemeContext";
 
-let theme = createTheme()
-theme = responsiveFontSizes(theme);
+let themeMui = createTheme()
+themeMui = responsiveFontSizes(themeMui);
 
 
 export default function MultipleSlides ({categoryTitle, path }) {
 
   const [movies, setMovies] = useState([]);
+  const { theme } = useContext(ThemeContext)
+
  
   const apiKey = import.meta.env.VITE_APP_API_KEY;
  
@@ -48,10 +51,10 @@ export default function MultipleSlides ({categoryTitle, path }) {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeMui}>
       <Box sx={{width: '90%', margin: '0 auto', marginTop: '50px'}}>
 
-        <Typography variant="h3" sx={{mb:'20px', display: 'flex', justifyContent: 'center', color:"white", fontFamily:"BlinkMacSystemFont", fontWeight: 'bold'}}>
+        <Typography variant="h3" sx={{mb:'20px', display: 'flex', justifyContent: 'center', fontFamily:"BlinkMacSystemFont", color: theme, fontWeight: 'bold'}}>
           {categoryTitle}
         </Typography>
 

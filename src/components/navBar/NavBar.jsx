@@ -1,104 +1,38 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import React from 'react';
+import {AppBar, Box, IconButton, Typography, Menu, Container, Button, MenuItem, Switch} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import Toolbar from '@mui/material/Toolbar';
+import Search from '@mui/icons-material/Search';
 import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';
-
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import SwitchButton from '../switchButton/SwitchButton';
 
 
 const pages = [{title: 'Home', path: '/'}, {title: 'Populares', path: '/most_popular'}, {title:'Próximos lanzamientos', path: '/upcoming'}];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
 
 function NavBar() {
 
-    const Search = styled('div')(({ theme }) => ({
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
-        '&:hover': {
-          backgroundColor: alpha(theme.palette.common.white, 0.25),
-        },
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-          marginLeft: theme.spacing(1),
-          width: 'auto',
-        },
-      }));
-      
-      const SearchIconWrapper = styled('div')(({ theme }) => ({
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }));
-      
-      const StyledInputBase = styled(InputBase)(({ theme }) => ({
-        color: 'inherit',
-        '& .MuiInputBase-input': {
-          padding: theme.spacing(1, 1, 1, 0),
-          // vertical padding + font size from searchIcon
-          paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-          transition: theme.transitions.create('width'),
-          width: '100%',
-          [theme.breakpoints.up('sm')]: {
-            width: '12ch',
-            '&:focus': {
-              width: '20ch',
-            },
-          },
-        },
-      }));
-
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-
+  
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
-  
 
   return (
     <AppBar position="static" sx={{backgroundColor:'#1A120B'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <SlowMotionVideoOutlinedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color:"#28DF99", fontSize: 40, pt:2 }} />
+          <Link to={pages[0].path} style={{display:"flex", flexDirection:"row", textDecoration:"none"}} >
+          <SlowMotionVideoOutlinedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color:"#28DF99", fontSize: 40, pt:6 }} />
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
             sx={{
               mr: 2,
               mt:6,
@@ -107,14 +41,15 @@ function NavBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               fontSize: 30,
-              letterSpacing: '.3rem',
+              letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
               color:"#28DF99"
             }}
           >
-            AllMovies
+            AppMovies
           </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -142,88 +77,67 @@ function NavBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none'},
               }}
             >
               {pages.map((page) => (
-                <Link to={page.path} sx={{backgroundColor:"black"}}>
-                <MenuItem key={page.title} onClick={handleCloseNavMenu} sx={{textDecoration:"none", color:"black"}} >
-                <Typography textAlign="center">{page.title}</Typography>
+                <Link to={page.path} style={{textDecorationColor:"#28DF99"}}>
+                <MenuItem key={page.title} onClick={handleCloseNavMenu} sx={{textDecoration:"underline", textDecorationColor: "black"}}  >
+                <Typography textAlign="center" sx={{color:"black"}}>{page.title}</Typography>
                 </MenuItem>
                 </Link>
               ))}
             </Menu>
           </Box>
+
+          <Link to={pages[0].path} style={{display:"flex", flexDirection:"row", textDecoration:"none"}}>
           <SlowMotionVideoOutlinedIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color:"#28DF99" }} />
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href="/"
             sx={{
-              mr: 2,
+              mr: 22,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
+              fontWeight: 900,
+              letterSpacing: '.1rem',
               textDecoration: 'none',
-              color:"#28DF99"
+              color:"#28DF99",
+
             }}
           >
-            AllMovies
+            AppMovies
           </Typography>
-          
+          </Link>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex'} }}>
             {pages.map((page) => (
-              <Button size="large"
-                key={page.title}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-                
-              >
-                <Link to={page.path}>{page.title}</Link>
-              </Button>
+              <Link to={page.path} style={{textDecoration:"underline", textDecorationColor:"#28DF99"}} >
+                <Button size="large"
+                  key={page.title}
+                  onClick={handleCloseNavMenu}
+                  sx={{ mt:2, ml:12, color: 'white', display: 'block' }}
+                  
+                >
+                {page.title}
+                  
+                </Button>
+              </Link>
             ))}
           </Box>
 
+            <Button sx={{
+                mr:"20px",
+                borderRadius: "25%",
+                boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset',
+              }}>
+            <Link to="/search">
+              <Search fontSize='large' sx={{color:"#28DF99"}} />
+            </Link>
+            </Button>
 
-           <Link to="/search">
-
-              <SearchIcon />
-           </Link>
-          
-          
-
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
+            <SwitchButton />
 
         </Toolbar>
         
