@@ -21,7 +21,7 @@ const ThemeContextProvider = ({children}) => {
    
     setTheme(theme.color === "black" ? dark : light)
   }
-  console.log(theme)
+  
 
   const data = {
    theme,

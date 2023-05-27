@@ -18,7 +18,8 @@ export default function SearchMovies() {
     ).then((data) => {
       console.log(data);
       setMovies(data.data.results);
-    });
+    })
+    
   }, [searchValue]);
 
   const handleInputSearch = (e) => {
