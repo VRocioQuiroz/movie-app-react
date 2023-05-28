@@ -42,7 +42,6 @@ function NavBar() {
               fontWeight: 700,
               fontSize: 30,
               letterSpacing: '.1rem',
-              color: 'inherit',
               textDecoration: 'none',
               color:"#3dd6a8"
             }}
