@@ -14,8 +14,9 @@ const ThemeContextProvider = ({children}) => {
     color: "white",
   };
 
+
   const [theme, setTheme] = useState(dark)
-  console.log(theme)
+
 
   const toggleTheme = () => {
    
@@ -28,6 +29,7 @@ const ThemeContextProvider = ({children}) => {
    toggleTheme
   }
 
+  
  return <ThemeContext.Provider value={data} >{children}</ThemeContext.Provider>
 
 }

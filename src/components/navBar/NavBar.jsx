@@ -6,6 +6,7 @@ import Search from '@mui/icons-material/Search';
 import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';
 import { Link } from 'react-router-dom';
 import SwitchButton from '../switchButton/SwitchButton';
+import { useMediaQuery } from 'react-responsive';
 
 
 const pages = [{title: 'Home', path: '/'}, {title: 'Populares', path: '/most_popular'}, {title:'Próximos lanzamientos', path: '/upcoming'}];
@@ -23,7 +24,8 @@ function NavBar() {
     setAnchorElNav(null);
   };
 
-
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  
   return (
     <AppBar position="static" sx={{backgroundColor:'#1A120B'}}>
       <Container maxWidth="xl">
@@ -80,7 +82,7 @@ function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <Link to={page.path} style={{textDecorationColor:"#28DF99"}}>
+                <Link key={page.title}  to={page.path} style={{textDecorationColor:"#28DF99"}}>
                 <MenuItem key={page.title} onClick={handleCloseNavMenu} sx={{textDecoration:"underline", textDecorationColor: "black"}}  >
                 <Typography textAlign="center" sx={{color:"black"}}>{page.title}</Typography>
                 </MenuItem>
@@ -112,11 +114,11 @@ function NavBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex'} }}>
             {pages.map((page) => (
-              <Link to={page.path} style={{textDecoration:"underline", textDecorationColor:"#3dd6a8"}} >
+              <Link key={page.title} to={page.path} style={{textDecoration:"underline", textDecorationColor:"#3dd6a8"}} >
                 <Button size="large"
                   key={page.title}
                   onClick={handleCloseNavMenu}
-                  sx={{ mt:2, ml:12, color: 'white', display: 'block', fontFamily:"monospace", fontSize:"20px" }}
+                  sx={{ mt:2, ml: isMobile ? 0 : 12, color: 'white', display: 'block', fontFamily:"monospace", fontSize:"20px" }}
                   
                 >
                 {page.title}
@@ -125,9 +127,11 @@ function NavBar() {
               </Link>
             ))}
           </Box>
-
-            <Button sx={{
-                mr:"50px",
+          
+          <Box sx={{display:"flex", flexDirection:"row", alignItems:"center",}}>
+            <Button 
+              sx={{ 
+                mr: "50px",
                 borderRadius: "50%",
                 boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset',
               }}>
@@ -136,7 +140,9 @@ function NavBar() {
             </Link>
             </Button>
 
-            <SwitchButton/>
+            <SwitchButton />
+
+            </Box>
 
         </Toolbar>
         
