@@ -3,7 +3,7 @@
 > *Proyecto final React para Ada ITW*   
 ---
 
-### [¡Hecha un vistazo a mi proyecto!](https://vrocioquiroz.github.io/js-tp-generador-de-contrase-as/) 🎞   
+### [¡Hecha un vistazo a mi proyecto!](https://movie-app-react-chi.vercel.app/) 🎞   
 
 
 Proyecto realizado en React que aúna los conocimientos del módulo final del boot camp de Desarrollador Front End, integrando también conocimientos adquiridos a lo largo de la cursada como Javascript, HTML%, CSS entre otros...
