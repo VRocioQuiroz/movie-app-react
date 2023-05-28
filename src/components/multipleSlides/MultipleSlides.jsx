@@ -24,6 +24,7 @@ export default function MultipleSlides ({categoryTitle, path }) {
     .then((data) => {
       setMovies(data.data.results)
     })
+    
   }, [path]);
 
   const options = {
