@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Box, InputLabel } from "@mui/material";
 import CardMovie from "../cards/CardMovie";
@@ -7,11 +7,12 @@ import OutlinedInput from "@mui/material/Input";
 import lupa from "../../assets/lupa.png";
 import carrete from "../../assets/carrete.png";
 import { useMediaQuery } from 'react-responsive';
-
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function SearchMovies() {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const { theme} = useContext(ThemeContext)
 
   const apiKey = import.meta.env.VITE_APP_API_KEY;
 
@@ -19,7 +20,7 @@ export default function SearchMovies() {
     axios(
       `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&languaje=es-ES&query=${searchValue}&page=1`
     ).then((data) => {
-      console.log(data);
+      
       setMovies(data.data.results);
     })
     
@@ -34,7 +35,7 @@ export default function SearchMovies() {
   return (
     <Box
       sx={{
-        backgroundColor: "#191919",
+        backgroundColor: theme,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -47,18 +48,19 @@ export default function SearchMovies() {
           my: 5,
           textAlign: "center",
           display: "flex",
+          justifyContent:"center",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <InputLabel sx={{ color: "white", fontSize: "30px", mb: 4 }}>
+        <InputLabel sx={{ color: theme, fontSize: "30px", mb: 4 }}>
           ¿Qué quieres ver?
         </InputLabel>
         <OutlinedInput
           onChange={handleInputSearch}
           placeholder="Ingresa tu película"
           color="success"
-          sx={{ color: "white", width: "400px", fontSize: "25px" }}
+          sx={{ color: theme, width: isMobile ? "200px" : "400px", fontSize: "25px" }}
         />
         {!searchValue && (
           <img src={carrete} style={{ width: 250, marginTop: 50 }} />
@@ -84,7 +86,7 @@ export default function SearchMovies() {
             }}
           >
             <img src={lupa} width={ isMobile ? 200 : 350} />
-            <p style={{ margin: "50px", fontSize: "30px", color: "white" }}>
+            <p style={{ margin: "50px", fontSize: "30px", color: theme }}>
               No hay resultados...
             </p>
           </div>
