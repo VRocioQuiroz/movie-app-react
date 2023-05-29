@@ -2,6 +2,11 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faTwitter, faTiktok } from "@fortawesome/free-brands-svg-icons";
 import { Typography, Box, Button } from "@mui/material";
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
+
+
+let themeMui = createTheme()
+themeMui = responsiveFontSizes(themeMui);
 
 
 export default function Footer() {
@@ -21,8 +26,10 @@ export default function Footer() {
 
   };
   
-
+ 
   return (
+
+    <ThemeProvider theme={themeMui}>
     <Box
       sx={{
         width: "100%",
@@ -39,6 +46,7 @@ export default function Footer() {
           py: 4,
         }}
       >
+
         <Typography sx={{ color: "white", fontSize: "25px", pr: 2 }}>
           Seguinos en:
         </Typography>
@@ -73,5 +81,7 @@ export default function Footer() {
         </Typography>
         
     </Box>
+
+    </ThemeProvider>
   );
 }

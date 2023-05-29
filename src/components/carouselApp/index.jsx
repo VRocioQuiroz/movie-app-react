@@ -1,11 +1,17 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
-
-import { Box, Typography, Button, CardMedia } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useMediaQuery } from 'react-responsive';
 
-export default function App() {
+
+
+export default function CarouselApp () {
+  
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   const apiKey = import.meta.env.VITE_APP_API_KEY;
@@ -18,7 +24,9 @@ export default function App() {
     });
   }, []);
 
+  
   return (
+
     <Box
       style={{ heigth: "300px", boxShadow: "0 0 8px rgba(255, 255, 255, 0.5)" }}
     >
@@ -37,7 +45,7 @@ export default function App() {
               key={movie.title}
               sx={{
                 maxWidth: 2000,
-                height: 500,
+                height: isMobile ? 650 : 500,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -50,14 +58,14 @@ export default function App() {
               <Box
                 sx={{
                   width: 900,
-                  heigth: 400,
+                  heigth: isMobile ? 550 : 400,
                   p: 2,
                   backgroundColor: "rgba(0, 0, 0, 0.5)",
                 }}
               >
                 <Typography
-                  variant="h2"
-                  sx={{ p: 4, color: "white", fontWeight: "bold" }}
+                  variant={isMobile ? "h4" : "h2"}
+                  sx={{ color: "white", fontWeight: "bold" }}
                 >
                   {movie.title}
                 </Typography>
@@ -93,5 +101,6 @@ export default function App() {
         })}
       </Carousel>
     </Box>
+
   );
 }
