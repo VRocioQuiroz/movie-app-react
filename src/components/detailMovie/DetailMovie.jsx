@@ -8,6 +8,7 @@ import ReactPlayer from "react-player";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import { useMediaQuery } from "react-responsive";
 
+
 export default function DetailMovie() {
   const { id } = useParams();
 

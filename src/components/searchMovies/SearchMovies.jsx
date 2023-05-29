@@ -95,6 +95,7 @@ export default function SearchMovies() {
             if (movie.poster_path !== null) {
               return (
                 <CardMovie
+                  key={movie.id}
                   id={movie.id}
                   title={movie.title}
                   poster={movie.poster_path}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Card, CardMedia, CardActionArea} from '@mui/material';
 import { useMediaQuery } from 'react-responsive';
-
+import { Link } from 'react-router-dom';
 
 export default function CardMovie({title, poster, id}) {
 
@@ -16,8 +16,9 @@ export default function CardMovie({title, poster, id}) {
       "&:hover": { transform: "scale(1.05)"},
       boxShadow: "0 0 8px rgba(255, 255, 255, 0.5)"
       }}>
-
-      <CardActionArea href={`movie/${id}`}>
+      
+      <Link to={`/movie/${id}`}>
+      <CardActionArea>
         <CardMedia
           component="img"
           width={"100%"}
@@ -27,6 +28,9 @@ export default function CardMovie({title, poster, id}) {
           style={{ objectFit: "cover" }}
         />
       </CardActionArea>
+      </Link>
+
+
     </Card>
     
   );
