@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Box, InputLabel } from "@mui/material";
@@ -5,6 +6,8 @@ import CardMovie from "../cards/CardMovie";
 import OutlinedInput from "@mui/material/Input";
 import lupa from "../../assets/lupa.png";
 import carrete from "../../assets/carrete.png";
+import { useMediaQuery } from 'react-responsive';
+
 
 export default function SearchMovies() {
   const [movies, setMovies] = useState([]);
@@ -26,12 +29,15 @@ export default function SearchMovies() {
     setSearchValue(encodeURIComponent(e.target.value));
   };
 
+  const isMobile = useMediaQuery({ maxWidth: 580 });
+
   return (
     <Box
       sx={{
         backgroundColor: "#191919",
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
         minHeight: "600px",
         heigth: "100%",
       }}
@@ -77,7 +83,7 @@ export default function SearchMovies() {
               alignItems: "center",
             }}
           >
-            <img src={lupa} width={350} />
+            <img src={lupa} width={ isMobile ? 200 : 350} />
             <p style={{ margin: "50px", fontSize: "30px", color: "white" }}>
               No hay resultados...
             </p>

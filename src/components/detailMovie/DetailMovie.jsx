@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -5,7 +6,7 @@ import { Box, CardMedia, Button, Typography, Stack} from '@mui/material';
 import { PlayArrow } from "@mui/icons-material";
 import ReactPlayer from 'react-player';
 import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
-
+import { useMediaQuery } from 'react-responsive';
 
 export default function DetailMovie() {
     
@@ -39,11 +40,12 @@ export default function DetailMovie() {
     const handleToggleTrailer = () => {
       setShowTrailer(!showTrailer);
     };
+ 
+    const isMobileScreen = useMediaQuery({ maxWidth: 768 })
 
-    
     return (
   
-      <Box sx={{ maxWidth: 2000, height:600, py:12, px:6, backgroundImage:`url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', display: "flex", flexDirection:"row" }} >
+      <Box sx={{ maxWidth: 2000, height:600, py:12, px:6, backgroundImage:`url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', display: "flex", flexDirection: isMobileScreen ? "column" : "row" }} >
         
         <CardMedia
           sx={{width:300, height: 400, border: 1}}

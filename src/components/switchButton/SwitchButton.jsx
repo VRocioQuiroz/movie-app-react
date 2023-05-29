@@ -3,9 +3,9 @@ import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-
 import { useContext } from 'react';
 import { ThemeContext } from '../../context/ThemeContext';
+
 
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -60,19 +60,12 @@ export default function SwitchButton() {
    
   const { toggleTheme } = useContext(ThemeContext);
 
-//   const [checked, setChecked] = React.useState(true);
-
-//   const handleChange = (event) => {
-//     setChecked(event.target.checked);
-//     toggleTheme()
-//   };
-
   return (
     <FormGroup>
       <FormControlLabel
-        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked  /> }
+        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked size='small' /> }
         onChange={toggleTheme}
-        
+       
       />
     </FormGroup>
   );

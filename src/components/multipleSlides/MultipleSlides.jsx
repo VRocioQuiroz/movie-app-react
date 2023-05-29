@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Typography } from '@mui/material';
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
@@ -6,6 +7,7 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 import { ThemeContext } from "../../context/ThemeContext";
+
 
 let themeMui = createTheme()
 themeMui = responsiveFontSizes(themeMui);

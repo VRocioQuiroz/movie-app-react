@@ -1,9 +1,10 @@
+import React from 'react';
 import MultipleSlides from "../multipleSlides/MultipleSlides"
 import { ThemeContext } from "../../context/ThemeContext";
 import { useContext } from "react";
-import Carousel from "../carousel/Carousel"
+import CarouselApp from '../carouselApp';
 import { Box } from "@mui/material"
-
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
   return (
     <Box sx={{backgroundColor: theme, pb:4}}>
       
-      <Carousel />
+      <CarouselApp />
 
       <MultipleSlides path="/movie/popular" categoryTitle={"Películas populares"}/>
      

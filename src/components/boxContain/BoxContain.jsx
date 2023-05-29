@@ -5,6 +5,7 @@ import PaginationMovies from "../paginationMovies/PaginationMovies";
 import {Box, Typography} from'@mui/material'
 import { ThemeContext } from "../../context/ThemeContext";
 
+
 export default function BoxContain({path, categoryTitle}) {
 
   const [movies, setMovies] = useState([]);
@@ -24,15 +25,16 @@ export default function BoxContain({path, categoryTitle}) {
     setPageNumber(value)
   }
   
+
   return (
 
     <Box sx={{backgroundColor: theme, py:4}}> 
 
-      <Typography variant="h3" sx={{mb:'20px', display: 'flex', justifyContent: 'center', color: theme, fontFamily:"BlinkMacSystemFont", fontWeight: 'bold'}}>
+      <Typography variant="h3" sx={{mb:'20px', textAlign:"center", color: theme, fontFamily:"BlinkMacSystemFont", fontWeight: 'bold'}}>
         {categoryTitle}
       </Typography>
 
-      <Box sx={{display:"flex", flexWrap:"wrap", justifyContent:"flex-start", ml:10}}>
+      <Box sx={{display:"flex", flexWrap:"wrap", justifyContent:"center"}}>
     
         {movies.map((movie) => {
             if (movie.poster_path !== null) {

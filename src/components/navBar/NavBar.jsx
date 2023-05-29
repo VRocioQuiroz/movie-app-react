@@ -26,6 +26,7 @@ function NavBar() {
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
   
+ 
   return (
     <AppBar position="static" sx={{backgroundColor:'#1A120B'}}>
       <Container maxWidth="xl">
@@ -53,6 +54,7 @@ function NavBar() {
           </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -63,6 +65,7 @@ function NavBar() {
             >
               <MenuIcon />
             </IconButton>
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -89,7 +92,11 @@ function NavBar() {
                 </Link>
               ))}
             </Menu>
+           
+
           </Box>
+        
+        
 
           <Link to={pages[0].path} style={{display:"flex", flexDirection:"row", textDecoration:"none"}}>
           <SlowMotionVideoOutlinedIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color:"#28DF99" }} />
@@ -125,24 +132,22 @@ function NavBar() {
                   
                 </Button>
               </Link>
+
             ))}
+
           </Box>
-          
-          <Box sx={{display:"flex", flexDirection:"row", alignItems:"center",}}>
-            <Button 
-              sx={{ 
-                mr: "50px",
-                borderRadius: "50%",
-                boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset',
-              }}>
-            <Link to="/search">
-              <Search sx={{color:"#3dd6a8", fontSize:"50px"}} />
-            </Link>
-            </Button>
+
+          <Box sx={{ flexGrow: isMobile ? 2 : 1, display:"flex", flexDirection: "row" }}>
+            
+          <IconButton sx={{ p: 0, mx: isMobile ? 0 : 7 }}>
+              <Link to="/search">
+                <Search sx={{color:"#3dd6a8", fontSize: isMobile ? "30px" : "50px",   }} />
+              </Link>
+            </IconButton>
 
             <SwitchButton />
-
-            </Box>
+           
+          </Box>
 
         </Toolbar>
         
