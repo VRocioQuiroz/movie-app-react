@@ -5,7 +5,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useMediaQuery } from 'react-responsive';
-
+import { Link } from 'react-router-dom';
 
 
 export default function CarouselApp () {
@@ -80,21 +80,24 @@ export default function CarouselApp () {
                 >
                   {movie.overview}
                 </Typography>
+                
 
-                <Button
-                  href={`movie/${movie.id}`}
-                  variant="contained"
-                  sx={{
-                    p: 2,
-                    backgroundColor: "#28DF99",
-                    "&:hover": {
-                      backgroundColor: "#16FF00",
-                     
-                    },
-                  }}
-                >
-                  Ver mas
-                </Button>
+                <Link to={`movie/${movie.id}`}> 
+                  <Button
+                    variant="contained"
+                    sx={{
+                      p: 2,
+                      backgroundColor: "#28DF99",
+                      "&:hover": {
+                        backgroundColor: "#16FF00",
+                      
+                      },
+                    }}
+                  >
+                    Ver mas
+                  </Button>
+                </Link>
+
               </Box>
             </Box>
           );

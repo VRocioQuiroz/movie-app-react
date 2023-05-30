@@ -2,7 +2,7 @@ import React from 'react';
 import MultipleSlides from "../multipleSlides/MultipleSlides"
 import { ThemeContext } from "../../context/ThemeContext";
 import { useContext } from "react";
-import CarouselApp from '../carouselApp';
+import CarouselApp from '../carouselApp/CarouselApp';
 import { Box } from "@mui/material"
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
